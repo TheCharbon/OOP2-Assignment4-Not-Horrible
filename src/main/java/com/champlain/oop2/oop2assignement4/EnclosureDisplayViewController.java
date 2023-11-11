@@ -51,7 +51,10 @@ public class EnclosureDisplayViewController {
 
     @FXML
     protected void onEnclosureRemoveButtonClick() {
-        System.exit(0);
+        Animal selectedAnimal = aEnclosureAnimalListView.getSelectionModel().getSelectedItem();
+        if (selectedAnimal != null) {
+            aEnclosureAnimalListView.getItems().remove(selectedAnimal);
+        }
     }
     @FXML
     protected void onEnclosureBackButtonClick() {
