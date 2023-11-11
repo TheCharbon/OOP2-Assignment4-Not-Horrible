@@ -33,10 +33,11 @@ public class Enclosure implements AnimalCollection{
 
     @Override
     public String toString() {
-        return getName(); // Assuming you have a getName() method
+        return getName();
     }
 
+    @Override
     public List<Animal> getAnimals() {
-        return new ArrayList<>(); // Return an empty list for now
+        return aAnimals;
     }
 }

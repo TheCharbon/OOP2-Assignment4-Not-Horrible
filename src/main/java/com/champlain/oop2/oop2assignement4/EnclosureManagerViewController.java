@@ -33,16 +33,20 @@ public class EnclosureManagerViewController implements Initializable {
 
     @FXML
     protected void onMainViewButtonClick(ActionEvent pEvent) throws IOException {
-        Enclosure pEnclosure = new Enclosure();
+        // Get the selected item from aMainListView
+        AnimalCollection selectedAnimalCollection = aMainListView.getSelectionModel().getSelectedItem();
 
         FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("EnclosureDisplayView.fxml"));
         Parent view = fxmlLoader.load();
         EnclosureDisplayViewController newEnclosureDisplayViewController = fxmlLoader.getController();
-        newEnclosureDisplayViewController.setEnclosure();
+
+        // Pass the selected item to EnclosureDisplayViewController
+        newEnclosureDisplayViewController.setAnimalCollection(selectedAnimalCollection);
+
         Scene nextScene = new Scene(view, 500, 500);
         Stage nextStage = new Stage();
         nextStage.setScene(nextScene);
-        nextStage.setTitle(pEnclosure.getName());
+        nextStage.setTitle(selectedAnimalCollection.getName()); // Set a meaningful title
         nextStage.initModality(Modality.WINDOW_MODAL);
         nextStage.initOwner(((Node) pEvent.getSource()).getScene().getWindow());
         nextStage.showAndWait();

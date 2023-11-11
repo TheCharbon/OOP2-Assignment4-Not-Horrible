@@ -35,4 +35,13 @@ public class CompositeAnimal implements AnimalCollection{
     public String toString() {
         return getName(); // Assuming you have a getName() method
     }
+
+    @Override
+    public List<Animal> getAnimals() {
+        List<Animal> allAnimals = new ArrayList<>();
+        for (AnimalCollection animalGroup : animalCollections) {
+            allAnimals.addAll(animalGroup.getAnimals());
+        }
+        return allAnimals;
+    }
 }

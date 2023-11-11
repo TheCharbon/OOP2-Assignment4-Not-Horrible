@@ -2,6 +2,7 @@ package com.champlain.oop2.oop2assignement4;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
@@ -19,7 +20,6 @@ public class EnclosureDisplayViewController {
 
     @FXML
     public ListView<Animal> aEnclosureAnimalListView;
-
 
     @FXML
     protected void onEnclosureViewEditButtonClick() {
@@ -40,9 +40,24 @@ public class EnclosureDisplayViewController {
         stage.close();
     }
 
+    public void setAnimalCollection(AnimalCollection animalCollection) {
 
-    public void setEnclosure() {
+        // Display the animals from the selectedAnimalCollection
+        aEnclosureAnimalListView.getItems().setAll(animalCollection.getAnimals());
+    }
 
+    public void initialize() {
+        aEnclosureAnimalListView.setCellFactory(param -> new ListCell<>() {
+            @Override
+            protected void updateItem(Animal animal, boolean empty) {
+                super.updateItem(animal, empty);
+                if (empty || animal == null) {
+                    setText(null);
+                } else {
+                    setText(animal.getName());
+                }
+            }
+        });
     }
 
 }
