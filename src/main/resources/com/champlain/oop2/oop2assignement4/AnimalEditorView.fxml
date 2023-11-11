@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="248.0" prefWidth="373.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.champlain.oop2.oop2assignement4.AnimalEditorViewController">
+   <children>
+      <Label layoutX="21.0" layoutY="20.0" text="Animal Details">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="animalNameLabel" layoutX="35.0" layoutY="73.0" text="Name" />
+      <Label fx:id="animalWeightLabel" layoutX="35.0" layoutY="117.0" text="Weight" />
+      <Label fx:id="animalAgeLabel" layoutX="35.0" layoutY="164.0" text="Age" />
+      <TextField fx:id="aAnimalNameTextField" layoutX="136.0" layoutY="69.0" />
+      <TextField fx:id="aAnimalAgeTextField" layoutX="136.0" layoutY="160.0" />
+      <TextField fx:id="aAnimalWeightTextField" layoutX="136.0" layoutY="113.0" />
+      <Button fx:id="aAnimalSaveButton" layoutX="234.0" layoutY="209.0" mnemonicParsing="false" onAction="#onAnimalSaveButtonClick" text="Save" />
+      <Button fx:id="aAnimalBackButton" layoutX="307.0" layoutY="209.0" mnemonicParsing="false" onAction="#onAnimalBackButtonClick" text="Back" />
+   </children>
+</AnchorPane>
