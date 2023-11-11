@@ -6,12 +6,7 @@ import java.util.List;
 public class CompositeAnimal implements AnimalCollection{
     private String aName;
     private List<AnimalCollection> AnimalCollections;
-    List<AnimalCollection> animalCollections = new ArrayList<>(AnimalCollections);
-
-    public CompositeAnimal(String pName, List<AnimalCollection> pAnimalCollections) {
-        this.aName = pName;
-        this.AnimalCollections = pAnimalCollections;
-    }
+    List<AnimalCollection> animalCollections = new ArrayList<AnimalCollection>();
 
     public void addAnimalCollection(AnimalCollection pAnimalCollection) {
         this.animalCollections.add(pAnimalCollection);

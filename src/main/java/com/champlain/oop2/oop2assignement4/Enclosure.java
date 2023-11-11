@@ -26,4 +26,8 @@ public class Enclosure implements AnimalCollection{
     public String getName() {
         return this.aName;
     }
+
+    public void addAnimal(Animal animal) {
+        aAnimals.add(animal);
+    }
 }
