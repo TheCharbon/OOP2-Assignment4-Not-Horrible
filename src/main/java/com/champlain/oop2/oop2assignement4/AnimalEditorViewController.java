@@ -30,4 +30,6 @@ public class AnimalEditorViewController {
         stage.close();
     }
 
+    public void setEnclosure() {
+    }
 }
