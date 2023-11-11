@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -26,7 +27,6 @@ public class EnclosureDisplayViewController {
 
     @FXML
     public ListView<Animal> aEnclosureAnimalListView;
-
 
     @FXML
     protected void onEnclosureViewEditButtonClick(ActionEvent pEvent) throws IOException {
@@ -59,9 +59,24 @@ public class EnclosureDisplayViewController {
         stage.close();
     }
 
+    public void setAnimalCollection(AnimalCollection animalCollection) {
 
-    public void setEnclosure() {
+        // Display the animals from the selectedAnimalCollection
+        aEnclosureAnimalListView.getItems().setAll(animalCollection.getAnimals());
+    }
 
+    public void initialize() {
+        aEnclosureAnimalListView.setCellFactory(param -> new ListCell<>() {
+            @Override
+            protected void updateItem(Animal animal, boolean empty) {
+                super.updateItem(animal, empty);
+                if (empty || animal == null) {
+                    setText(null);
+                } else {
+                    setText(animal.getName());
+                }
+            }
+        });
     }
 
 }
