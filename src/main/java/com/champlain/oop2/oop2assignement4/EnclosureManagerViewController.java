@@ -1,10 +1,22 @@
 package com.champlain.oop2.oop2assignement4;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-public class EnclosureManagerViewController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class EnclosureManagerViewController implements Initializable {
 
     @FXML
     private Button aMainView;
@@ -18,8 +30,31 @@ public class EnclosureManagerViewController {
     protected void onMainExitButtonClick() {
        System.exit(0);
     }
+
     @FXML
-    protected void onMainViewButtonClick() {
+    protected void onMainViewButtonClick(ActionEvent pEvent) throws IOException {
+        Enclosure pEnclosure = new Enclosure();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("EnclosureDisplayView.fxml"));
+        Parent view = fxmlLoader.load();
+        EnclosureDisplayViewController newEnclosureDisplayViewController = fxmlLoader.getController();
+        newEnclosureDisplayViewController.setEnclosure();
+        Scene nextScene = new Scene(view, 500, 500);
+        Stage nextStage = new Stage();
+        nextStage.setScene(nextScene);
+        nextStage.setTitle(pEnclosure.getName());
+        nextStage.initModality(Modality.WINDOW_MODAL);
+        nextStage.initOwner(((Node) pEvent.getSource()).getScene().getWindow());
+        nextStage.showAndWait();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        importAnimal();
+    }
+
+
+    public void importAnimal() {
         // Create the animal structure
         CompositeAnimal felineComposite = new CompositeAnimal();
         felineComposite.setName("Feline");
@@ -63,10 +98,6 @@ public class EnclosureManagerViewController {
         for(AnimalCollection animalGroup : felineComposite.animalCollections){
             aMainListView.getItems().add(animalGroup);
         }
-    }
-
-    public void importAnimal() {
-
     }
 
 }
