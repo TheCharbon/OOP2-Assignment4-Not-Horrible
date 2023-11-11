@@ -3,6 +3,7 @@ package com.champlain.oop2.oop2assignement4;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AnimalEditorViewController {
 
@@ -25,7 +26,8 @@ public class AnimalEditorViewController {
     }
     @FXML
     protected void onAnimalBackButtonClick() {
-        System.exit(0);
+        Stage stage = (Stage)  aAnimalBackButton.getScene().getWindow();
+        stage.close();
     }
 
 }
