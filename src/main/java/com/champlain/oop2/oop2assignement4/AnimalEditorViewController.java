@@ -22,8 +22,16 @@ public class AnimalEditorViewController {
 
     @FXML
     protected void onAnimalSaveButtonClick() {
-        System.exit(0);
+        String name = aAnimalNameTextField.getText();
+        double weight = Double.parseDouble(aAnimalWeightTextField.getText());
+        int age = Integer.parseInt(aAnimalAgeTextField.getText());
+
+        Animal animal = new Animal(name, weight, age);
+
+        Stage stage = (Stage) aAnimalSaveButton.getScene().getWindow();
+        stage.close();
     }
+
     @FXML
     protected void onAnimalBackButtonClick() {
         Stage stage = (Stage)  aAnimalBackButton.getScene().getWindow();
