@@ -13,7 +13,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 
 public class EnclosureDisplayViewController {
     @FXML
@@ -31,11 +30,11 @@ public class EnclosureDisplayViewController {
     @FXML
     protected void onEnclosureViewEditButtonClick(ActionEvent pEvent) throws IOException {
         Enclosure pEnclosure = new Enclosure();
-
         FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("AnimalEditorView.fxml"));
         Parent view = fxmlLoader.load();
         AnimalEditorViewController newAnimalEditorViewController = fxmlLoader.getController();
-        newAnimalEditorViewController.setEnclosure();
+        Animal selectedAnimal = aEnclosureAnimalListView.getSelectionModel().getSelectedItem();
+        newAnimalEditorViewController.setAnimal(selectedAnimal);
         Scene nextScene = new Scene(view, 500, 500);
         Stage nextStage = new Stage();
         nextStage.setScene(nextScene);
@@ -44,6 +43,7 @@ public class EnclosureDisplayViewController {
         nextStage.initOwner(((Node) pEvent.getSource()).getScene().getWindow());
         nextStage.showAndWait();
     }
+
     @FXML
     protected void onEnclosureAddButtonClick() {
         System.exit(0);
@@ -60,11 +60,10 @@ public class EnclosureDisplayViewController {
     }
 
     public void setAnimalCollection(AnimalCollection animalCollection) {
-
-        // Display the animals from the selectedAnimalCollection
         aEnclosureAnimalListView.getItems().setAll(animalCollection.getAnimals());
     }
 
+    // From ChatGPT.
     public void initialize() {
         aEnclosureAnimalListView.setCellFactory(param -> new ListCell<>() {
             @Override

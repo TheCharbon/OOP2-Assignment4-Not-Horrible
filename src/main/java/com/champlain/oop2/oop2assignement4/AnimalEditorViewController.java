@@ -30,6 +30,9 @@ public class AnimalEditorViewController {
         stage.close();
     }
 
-    public void setEnclosure() {
+    public void setAnimal(Animal animal) {
+        aAnimalNameTextField.setText(animal.getName());
+        aAnimalWeightTextField.setText(String.valueOf(animal.getWeight()));
+        aAnimalAgeTextField.setText(String.valueOf(animal.getAge()));
     }
 }
