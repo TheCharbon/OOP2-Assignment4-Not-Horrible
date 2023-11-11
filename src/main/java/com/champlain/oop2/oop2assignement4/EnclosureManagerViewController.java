@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.OffsetTime;
 import java.util.ResourceBundle;
 
 public class EnclosureManagerViewController implements Initializable {
@@ -75,18 +74,12 @@ public class EnclosureManagerViewController implements Initializable {
         tigerGeneralHabitatEnclosure.addAnimal(new Tiger("Kali", 18, 1));
         tigerGeneralHabitatEnclosure.addAnimal(new Tiger("Indra", 22, 1));
 
-        CompositeAnimal cougarEnclosure = new CompositeAnimal();
+        Enclosure cougarEnclosure = new Enclosure();
         cougarEnclosure.setName("Cougars");
-
-        Enclosure medicalCare = new Enclosure();
-        medicalCare.setName("medicalCareSection");
-        medicalCare.addAnimal(new Cougar("Sierra", 20, 5));
-
-        Enclosure otherCougars = new Enclosure();
-        otherCougars.setName("Other Cougars");
-        otherCougars.addAnimal(new Cougar("Rocky", 24, 8));
-        otherCougars.addAnimal(new Cougar("Luna", 35, 12));
-        otherCougars.addAnimal(new Cougar("Lenny", 54, 15));
+        cougarEnclosure.addAnimal(new Cougar("Sierra", 20, 5));
+        cougarEnclosure.addAnimal(new Cougar("Rocky", 24, 8));
+        cougarEnclosure.addAnimal(new Cougar("Luna", 35, 12));
+        cougarEnclosure.addAnimal(new Cougar("Lenny", 54, 15));
 
         tigerComposite.addAnimalCollection(tigerCubsEnclosure);
         tigerComposite.addAnimalCollection(tigerGeneralHabitatEnclosure);
