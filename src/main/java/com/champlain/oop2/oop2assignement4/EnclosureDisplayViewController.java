@@ -3,6 +3,7 @@ package com.champlain.oop2.oop2assignement4;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
 public class EnclosureDisplayViewController {
     @FXML
@@ -33,7 +34,9 @@ public class EnclosureDisplayViewController {
     }
     @FXML
     protected void onEnclosureBackButtonClick() {
-        System.exit(0);
+        Stage stage = (Stage) aEnclosureBackButton.getScene().getWindow();
+        stage.close();
+
     }
 
 
