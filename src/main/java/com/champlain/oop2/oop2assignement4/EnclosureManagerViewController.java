@@ -33,20 +33,15 @@ public class EnclosureManagerViewController implements Initializable {
 
     @FXML
     protected void onMainViewButtonClick(ActionEvent pEvent) throws IOException {
-        // Get the selected item from aMainListView
         AnimalCollection selectedAnimalCollection = aMainListView.getSelectionModel().getSelectedItem();
-
         FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("EnclosureDisplayView.fxml"));
         Parent view = fxmlLoader.load();
         EnclosureDisplayViewController newEnclosureDisplayViewController = fxmlLoader.getController();
-
-        // Pass the selected item to EnclosureDisplayViewController
         newEnclosureDisplayViewController.setAnimalCollection(selectedAnimalCollection);
-
         Scene nextScene = new Scene(view, 500, 500);
         Stage nextStage = new Stage();
         nextStage.setScene(nextScene);
-        nextStage.setTitle(selectedAnimalCollection.getName()); // Set a meaningful title
+        nextStage.setTitle(selectedAnimalCollection.getName());
         nextStage.initModality(Modality.WINDOW_MODAL);
         nextStage.initOwner(((Node) pEvent.getSource()).getScene().getWindow());
         nextStage.showAndWait();
@@ -57,9 +52,7 @@ public class EnclosureManagerViewController implements Initializable {
         importAnimal();
     }
 
-
     public void importAnimal() {
-        // Create the animal structure
         CompositeAnimal felineComposite = new CompositeAnimal();
         felineComposite.setName("Feline");
 
@@ -88,16 +81,12 @@ public class EnclosureManagerViewController implements Initializable {
         cougarEnclosure.addAnimal(new Cougar("Luna", 35, 12));
         cougarEnclosure.addAnimal(new Cougar("Lenny", 54, 15));
 
-        // Build the hierarchy
         tigerComposite.addAnimalCollection(tigerCubsEnclosure);
         tigerComposite.addAnimalCollection(tigerGeneralHabitatEnclosure);
 
         felineComposite.addAnimalCollection(lionEnclosure);
         felineComposite.addAnimalCollection(tigerComposite);
         felineComposite.addAnimalCollection(cougarEnclosure);
-
-        // Display the animals
-        System.out.println(felineComposite.showAnimals());
 
         for(AnimalCollection animalGroup : felineComposite.animalCollections){
             aMainListView.getItems().add(animalGroup);

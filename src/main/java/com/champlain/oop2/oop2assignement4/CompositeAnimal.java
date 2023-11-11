@@ -5,7 +5,6 @@ import java.util.List;
 
 public class CompositeAnimal implements AnimalCollection{
     private String aName;
-    private List<AnimalCollection> AnimalCollections;
     List<AnimalCollection> animalCollections = new ArrayList<AnimalCollection>();
 
     public void addAnimalCollection(AnimalCollection pAnimalCollection) {
@@ -33,7 +32,7 @@ public class CompositeAnimal implements AnimalCollection{
 
     @Override
     public String toString() {
-        return getName(); // Assuming you have a getName() method
+        return getName();
     }
 
     @Override
