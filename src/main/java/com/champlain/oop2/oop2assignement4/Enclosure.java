@@ -30,4 +30,9 @@ public class Enclosure implements AnimalCollection{
     public void addAnimal(Animal animal) {
         aAnimals.add(animal);
     }
+
+    @Override
+    public String toString() {
+        return getName(); // Assuming you have a getName() method
+    }
 }
