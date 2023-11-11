@@ -35,4 +35,8 @@ public class Enclosure implements AnimalCollection{
     public String toString() {
         return getName(); // Assuming you have a getName() method
     }
+
+    public List<Animal> getAnimals() {
+        return new ArrayList<>(); // Return an empty list for now
+    }
 }

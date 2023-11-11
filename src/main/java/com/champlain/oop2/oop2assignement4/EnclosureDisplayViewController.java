@@ -5,6 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class EnclosureDisplayViewController {
     @FXML
     private Button aEnclosureViewEditButton;
@@ -16,7 +18,7 @@ public class EnclosureDisplayViewController {
     private Button aEnclosureBackButton;
 
     @FXML
-    private ListView<Animal> aEnclosureAnimalListView;
+    public ListView<Animal> aEnclosureAnimalListView;
 
 
     @FXML
@@ -36,9 +38,11 @@ public class EnclosureDisplayViewController {
     protected void onEnclosureBackButtonClick() {
         Stage stage = (Stage) aEnclosureBackButton.getScene().getWindow();
         stage.close();
-
     }
 
 
+    public void setEnclosure() {
+
+    }
 
 }
