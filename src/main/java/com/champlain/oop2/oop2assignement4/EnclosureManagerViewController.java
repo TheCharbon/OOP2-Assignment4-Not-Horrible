@@ -20,10 +20,6 @@ public class EnclosureManagerViewController {
     }
     @FXML
     protected void onMainViewButtonClick() {
-        System.exit(0);
-    }
-
-    public void importAnimal() {
         // Create the animal structure
         CompositeAnimal felineComposite = new CompositeAnimal();
         felineComposite.setName("Feline");
@@ -37,36 +33,40 @@ public class EnclosureManagerViewController {
         lionEnclosure.addAnimal(new Lion("Mufasa", 300, 14));
         lionEnclosure.addAnimal(new Lion("Nala", 200, 10));
 
-        Enclosure tigerEnclosure = new Enclosure();
-        tigerEnclosure.setName("Tiger Cubs");
-        tigerEnclosure.addAnimal(new Tiger("Tala (Mother)", 150, 6));
-        tigerEnclosure.addAnimal(new Tiger("Ravi", 20, 1));
-        tigerEnclosure.addAnimal(new Tiger("Kali", 18, 1));
-        tigerEnclosure.addAnimal(new Tiger("Indra", 22, 1));
+        Enclosure tigerCubsEnclosure = new Enclosure();
+        tigerCubsEnclosure.setName("Tiger Cubs");
+        tigerCubsEnclosure.addAnimal(new Tiger("Tala (Mother)", 150, 6));
+        tigerCubsEnclosure.addAnimal(new Tiger("Ravi", 20, 1));
 
-        CompositeAnimal isolationComposite = new CompositeAnimal();
-        isolationComposite.setName("Isolation enclosure (empty)");
+        Enclosure tigerGeneralHabitatEnclosure = new Enclosure();
+        tigerGeneralHabitatEnclosure.addAnimal(new Tiger("Kali", 18, 1));
+        tigerGeneralHabitatEnclosure.addAnimal(new Tiger("Indra", 22, 1));
 
-        CompositeAnimal cougarComposite = new CompositeAnimal();
-        cougarComposite.setName("Cougars");
-
-        Enclosure medicalCareEnclosure = new Enclosure();
-        medicalCareEnclosure.setName("Medical Care Section");
-        medicalCareEnclosure.addAnimal(new Lion("Sierra", 120, 8));
-        medicalCareEnclosure.addAnimal(new Lion("Rocky", 140, 9));
-        medicalCareEnclosure.addAnimal(new Lion("Luna", 110, 7));
-        medicalCareEnclosure.addAnimal(new Lion("Lenny", 130, 10));
+        Enclosure cougarEnclosure = new Enclosure();
+        cougarEnclosure.setName("Cougars");
+        cougarEnclosure.addAnimal(new Cougar("Sierra", 20, 5));
+        cougarEnclosure.addAnimal(new Cougar("Rocky", 24, 8));
+        cougarEnclosure.addAnimal(new Cougar("Luna", 35, 12));
+        cougarEnclosure.addAnimal(new Cougar("Lenny", 54, 15));
 
         // Build the hierarchy
-        tigerComposite.addAnimalCollection(tigerEnclosure);
-        tigerComposite.addAnimalCollection(isolationComposite);
+        tigerComposite.addAnimalCollection(tigerCubsEnclosure);
+        tigerComposite.addAnimalCollection(tigerGeneralHabitatEnclosure);
 
         felineComposite.addAnimalCollection(lionEnclosure);
         felineComposite.addAnimalCollection(tigerComposite);
-        felineComposite.addAnimalCollection(cougarComposite);
-        felineComposite.addAnimalCollection(medicalCareEnclosure);
+        felineComposite.addAnimalCollection(cougarEnclosure);
 
         // Display the animals
         System.out.println(felineComposite.showAnimals());
+
+        for(AnimalCollection animalGroup : felineComposite.animalCollections){
+            aMainListView.getItems().add(animalGroup);
+        }
     }
+
+    public void importAnimal() {
+
+    }
+
 }

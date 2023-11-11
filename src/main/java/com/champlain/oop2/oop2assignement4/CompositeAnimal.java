@@ -30,4 +30,9 @@ public class CompositeAnimal implements AnimalCollection{
     public String getName() {
         return this.aName;
     }
+
+    @Override
+    public String toString() {
+        return getName(); // Assuming you have a getName() method
+    }
 }
