@@ -14,11 +14,11 @@ public class AnimalEditorViewController {
     private TextField aAnimalWeightTextField;
     @FXML
     private TextField aAnimalAgeTextField;
+    private boolean aIsNew = true;
 
-    @FXML
-    private Button aAnimalSaveButton;
-    @FXML
-    private Button aAnimalBackButton;
+    private Animal aAnimal;
+
+    private Enclosure aEnclosure;
 
     @FXML
     protected void onAnimalSaveButtonClick() {
@@ -26,21 +26,33 @@ public class AnimalEditorViewController {
         double weight = Double.parseDouble(aAnimalWeightTextField.getText());
         int age = Integer.parseInt(aAnimalAgeTextField.getText());
 
-        Animal animal = new Animal(name, weight, age);
+        if (this.aIsNew) {
+            Animal animal = new Animal(name, weight, age);
+            aEnclosure.addAnimal(animal);
+        } else {
+            this.aAnimal.setName(name);
+            this.aAnimal.setWeight(weight);
+            this.aAnimal.setAge(age);
+        }
 
-        Stage stage = (Stage) aAnimalSaveButton.getScene().getWindow();
-        stage.close();
+        onAnimalBackButtonClick();
     }
 
     @FXML
     protected void onAnimalBackButtonClick() {
-        Stage stage = (Stage)  aAnimalBackButton.getScene().getWindow();
+        Stage stage = (Stage)  aAnimalNameTextField.getScene().getWindow();
         stage.close();
     }
 
     public void setAnimal(Animal animal) {
+        aIsNew = false;
+        aAnimal = animal;
         aAnimalNameTextField.setText(animal.getName());
         aAnimalWeightTextField.setText(String.valueOf(animal.getWeight()));
         aAnimalAgeTextField.setText(String.valueOf(animal.getAge()));
+    }
+
+    public void setEnclosure(Enclosure pEnclosure) {
+        this.aEnclosure = pEnclosure;
     }
 }

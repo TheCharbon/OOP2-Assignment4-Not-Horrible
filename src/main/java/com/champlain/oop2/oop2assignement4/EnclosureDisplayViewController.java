@@ -27,6 +27,8 @@ public class EnclosureDisplayViewController {
     @FXML
     public ListView<Animal> aEnclosureAnimalListView;
 
+    private AnimalCollection aCurrentCollection;
+
     @FXML
     protected void onEnclosureViewEditButtonClick(ActionEvent pEvent) throws IOException {
         Enclosure pEnclosure = new Enclosure();
@@ -35,6 +37,7 @@ public class EnclosureDisplayViewController {
         AnimalEditorViewController newAnimalEditorViewController = fxmlLoader.getController();
         Animal selectedAnimal = aEnclosureAnimalListView.getSelectionModel().getSelectedItem();
         newAnimalEditorViewController.setAnimal(selectedAnimal);
+        newAnimalEditorViewController.setEnclosure((Enclosure) this.aCurrentCollection);
         Scene nextScene = new Scene(view, 500, 500);
         Stage nextStage = new Stage();
         nextStage.setScene(nextScene);
@@ -42,6 +45,8 @@ public class EnclosureDisplayViewController {
         nextStage.initModality(Modality.WINDOW_MODAL);
         nextStage.initOwner(((Node) pEvent.getSource()).getScene().getWindow());
         nextStage.showAndWait();
+
+        updateView();
     }
 
     @FXML
@@ -63,7 +68,12 @@ public class EnclosureDisplayViewController {
     }
 
     public void setAnimalCollection(AnimalCollection animalCollection) {
-        aEnclosureAnimalListView.getItems().setAll(animalCollection.getAnimals());
+        this.aCurrentCollection = animalCollection;
+        updateView();
+    }
+
+    private void updateView() {
+        aEnclosureAnimalListView.getItems().setAll(this.aCurrentCollection.getAnimals());
     }
 
     // From ChatGPT.
