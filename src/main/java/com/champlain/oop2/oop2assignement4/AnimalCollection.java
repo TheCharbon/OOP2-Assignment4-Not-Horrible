@@ -7,5 +7,8 @@ public interface AnimalCollection {
     void setName(String pName);
     String getName();
     List<Animal> getAnimals();
+
+    void addAnimal(Animal newAnimal);
+
 }
 
