@@ -50,8 +50,21 @@ public class EnclosureDisplayViewController {
     }
 
     @FXML
-    protected void onEnclosureAddButtonClick() {
-        System.exit(0);
+    protected void onEnclosureAddButtonClick() throws IOException {
+        Enclosure pEnclosure = new Enclosure();
+        FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("AnimalEditorView.fxml"));
+        Parent view = fxmlLoader.load();
+        AnimalEditorViewController newAnimalEditorViewController = fxmlLoader.getController();
+        newAnimalEditorViewController.setEnclosure((Enclosure) this.aCurrentCollection);
+        Scene nextScene = new Scene(view, 500, 500);
+        Stage nextStage = new Stage();
+        nextStage.setScene(nextScene);
+        nextStage.setTitle(pEnclosure.getName());
+        nextStage.initModality(Modality.WINDOW_MODAL);
+        nextStage.initOwner(aEnclosureAddButton.getScene().getWindow());
+        nextStage.showAndWait();
+
+        updateView();
     }
 
     @FXML

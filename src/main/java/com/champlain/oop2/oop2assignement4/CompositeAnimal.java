@@ -43,4 +43,9 @@ public class CompositeAnimal implements AnimalCollection{
         }
         return allAnimals;
     }
+
+    @Override
+    public void addAnimal(Animal newAnimal) {
+
+    }
 }

@@ -2,6 +2,12 @@ package com.champlain.oop2.oop2assignement4;
 
 public class Animal {
     private String aName;
+
+    public Animal() {
+
+    }
+
+
     public void setName(String pName){
         this.aName = pName;
     }
